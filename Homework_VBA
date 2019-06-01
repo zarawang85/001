@@ -1,1 +1,89 @@
+Sub hw2_final():
+For Each ws In Worksheets
+'set table header
+ws.Cells(1, 9).Value = "Ticker"
+ws.Cells(1, 10).Value = "Yearly Change"
+ws.Cells(1, 11).Value = "Percent Change"
+ws.Cells(1, 12).Value = "Total Stock Volume"
+Dim Volume As Double
+Volume = 0
+Dim lastrow As Double
+lastrow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+Dim Priceopen As Single
+Dim Priceclose As Single
+Dim k As Integer
+k = 2
+For i = 1 To lastrow
+    
+    If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
+       ws.Cells(k, 9).Value = ws.Cells(i + 1, 1).Value
+       Priceopen = ws.Cells(i + 1, 3).Value
+       For j = i + 1 To lastrow
+           
+           Volume = Volume + ws.Cells(j, 7).Value
+           If ws.Cells(j + 1, 1).Value <> ws.Cells(j, 1).Value Then
+           ws.Cells(k, 12).Value = Volume
+           Volume = 0
+           Priceclose = ws.Cells(j, 6).Value
+           ws.Cells(k, 10).Value = Priceclose - Priceopen
+              If ws.Cells(k, 10).Value > 0 Then
+                 ws.Cells(k, 10).Interior.ColorIndex = 4
+              Else: ws.Cells(k, 10).Interior.ColorIndex = 3
+              End If
+           If Priceopen <> 0 Then
+           ws.Cells(k, 11).Value = (Priceclose - Priceopen) / Priceopen
+           Else: ws.Cells(k, 11).Value = 0
+           End If
+           ws.Cells(k, 11).NumberFormat = "0.00%"
+           Exit For
+           End If
+       Next j
+       k = k + 1
+    End If
+Next i
+ws.Range("I:I,L:L").EntireColumn.AutoFit
 
+Dim lastrow_2 As Double
+lastrow_2 = ws.Cells(Rows.Count, 12).End(xlUp).Row
+ws.Cells(2, 14).Value = "Greatest % increase"
+ws.Cells(3, 14).Value = "Greatest % Decrease"
+ws.Cells(4, 14).Value = "Greatest total volume"
+ws.Cells(1, 15).Value = "Ticker"
+ws.Cells(1, 16).Value = "Value"
+Dim increase As Double
+Dim decrease As Double
+Dim greatestvol As Double
+Dim increasetic As String
+Dim decreasetic As String
+Dim greatestvoltic As String
+
+greatestvol = ws.Cells(2, 12).Value
+increase = ws.Cells(2, 11).Value
+decrease = ws.Cells(2, 11).Value
+
+For c = 2 To lastrow_2
+    If ws.Cells(c, 11).Value > increase Then
+       increase = ws.Cells(c, 11).Value
+       increasetic = ws.Cells(c, 9).Value
+       
+    ElseIf ws.Cells(c, 11).Value < decrease Then
+       decrease = ws.Cells(c, 11).Value
+       decreasetic = ws.Cells(c, 9).Value
+    End If
+    
+    If ws.Cells(c, 12).Value > greatestvol Then
+       greatestvol = ws.Cells(c, 12).Value
+       greatestvoltic = ws.Cells(c, 9).Value
+    End If
+Next c
+ws.Cells(2, 15).Value = increasetic
+ws.Cells(3, 15).Value = decreasetic
+ws.Cells(2, 16).Value = increase
+ws.Cells(3, 16).Value = decrease
+ws.Cells(2, 16).NumberFormat = "0.00%"
+ws.Cells(3, 16).NumberFormat = "0.00%"
+ws.Cells(4, 15).Value = greatestvoltic
+ws.Cells(4, 16).Value = greatestvol
+ws.Range("N:N,P:P").EntireColumn.AutoFit
+Next
+End Sub
