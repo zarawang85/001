@@ -5,8 +5,10 @@ ws.Cells(1, 9).Value = "Ticker"
 ws.Cells(1, 10).Value = "Yearly Change"
 ws.Cells(1, 11).Value = "Percent Change"
 ws.Cells(1, 12).Value = "Total Stock Volume"
+'define volume variable to add up volume
 Dim Volume As Double
 Volume = 0
+'find last row
 Dim lastrow As Double
 lastrow = ws.Cells(Rows.Count, 1).End(xlUp).Row
 Dim Priceopen As Single
