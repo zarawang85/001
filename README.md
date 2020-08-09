@@ -10,9 +10,9 @@ Build VBA scripts in Excel to loop through 3 worksheets of real stock market dat
 
   * Conditional formatting that will highlight positive change in green and negative change in red.
   
- The result after running the scripts [Year 2014]
- ![GitHub Logo](2014.png)
-
-
 Also, in each sheet, find the 3 stocks that see the greatest increase, decrease in price and largest exchange volume, respectively. 
 
+The result after running the scripts are as follow:
+ ![GitHub Logo](2014.png)
+ ![GitHub Logo](2015.png)
+ ![GitHub Logo](2016.png)
