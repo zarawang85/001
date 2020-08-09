@@ -12,13 +12,13 @@ Build VBA scripts in Excel to loop through 3 worksheets of real stock market dat
   
 Also, in each sheet, find the 3 stocks that see the greatest increase, decrease in price and largest exchange volume, respectively. 
 
-**VBA scripts**
+### **VBA scripts**
 
 ![GitHub Logo](VBAscript-1.png)
 ![GitHub Logo](VBAscript-2.png)
 ![GitHub Logo](VBAscript-3.png)
 
-**The result after running the scripts are as follow:**
+### **The result after running the scripts are as follow:**
 
  ![GitHub Logo](2014.png)
  ![GitHub Logo](2015.png)
