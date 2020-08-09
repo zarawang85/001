@@ -10,7 +10,13 @@ Build VBA scripts in Excel to loop through 3 worksheets of real stock market dat
 
   * Conditional formatting that will highlight positive change in green and negative change in red.
   
-Also, in each sheet, find the 3 stocks that see the greatest increase, decrease in price and largest exchange volume, respectively. 
+Also, in each sheet, created another table on the very right finding the 3 stocks that 
+
+  * has the greatest increase in price 
+  
+  * has the greatest decrease in price 
+  
+  * has largest exchange volume 
 
 ### **VBA scripts**
 
